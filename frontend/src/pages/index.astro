@@ -32,8 +32,10 @@ import Icon from '../components/Icon.astro';
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: minmax(10%, 20%) auto;
     grid-template-columns: auto;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
   }
 
   .gradient-background {
@@ -48,15 +50,12 @@ import Icon from '../components/Icon.astro';
   }
 
   nav {
-    grid-row: 1;
-  }
-
-  div.icon-container {
-    padding: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
   }
 
   div.content {
-    grid-row: 2;
     display: flex;
     align-items: center;
     justify-content: center;
