@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Roles from '../components/Roles.astro';
+---
+
+<Layout title="Howdy">
+  <main class="gradient-background">
+    <nav>
+      <div class="icon-container">
+        <Icon icon="frankie-title" />
+      </div>
+    </nav>
+
+    <Roles />
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      main {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gradient-background {
+        background-color: hsla(41, 89%, 61%, 1);
+        background-image: radial-gradient(at 26% 74%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+          radial-gradient(at 73% 75%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+          radial-gradient(at 95% 76%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+          radial-gradient(at 22% 11%, hsla(3, 71%, 49%, 1) 0px, transparent 50%),
+          radial-gradient(at 45% 19%, hsla(51, 96%, 68%, 1) 0px, transparent 50%),
+          radial-gradient(at 7% 16%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+          radial-gradient(at 5% 94%, hsla(340, 38%, 64%, 1) 0px, transparent 50%);
+      }
+
+      nav {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+    </style>
+  </main>
+</Layout>
