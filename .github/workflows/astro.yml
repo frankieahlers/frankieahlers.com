@@ -1,3 +1,4 @@
+---
 # Sample workflow for building and deploying an Astro site to GitHub Pages
 #
 # To get started with Astro see: https://docs.astro.build/en/getting-started/
@@ -7,10 +8,11 @@ name: Deploy Astro site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches:
+      - "main"
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_dispatch: null
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -31,6 +33,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -62,17 +67,15 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ${{ env.BUILD_PATH }}/dist
+          path: dist
 
   deploy:
     environment:
