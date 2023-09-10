@@ -15,7 +15,7 @@ import Icon from '../components/Icon.astro';
       <span class="prefix">I’m Frankie, a</span>
       <div class="rotating-role">
         <span class="role prev">pet parent</span>
-        <span class="role current">UX designer</span>
+        <span class="role current"></span>
         <span class="role next">cyclist</span>
       </div>
       <span class="suffix">based in Philadelphia, PA.</span>
@@ -75,11 +75,17 @@ import Icon from '../components/Icon.astro';
     padding-left: 0.75ch;
   }
 
+  span.current:empty:before {
+    content: '\200b';
+  }
+
   span.current {
     border-style: solid;
     border-color: white;
     border-width: 1px;
     border-radius: 12px;
     padding: 0 0.5ch;
+    line-height: normal;
+    width: 9ch;
   }
 </style>
