@@ -69,12 +69,6 @@ import Icon from '../components/Icon.astro';
     line-height: 1.75;
   }
 
-  span.prev,
-  span.next {
-    opacity: 0.2;
-    padding-left: 0.75ch;
-  }
-
   span.current:empty:before {
     content: '\200b';
   }
@@ -87,5 +81,11 @@ import Icon from '../components/Icon.astro';
     padding: 0 0.5ch;
     line-height: normal;
     width: 9ch;
+  }
+
+  .role:has(+ .current),
+  .current + span {
+    opacity: 0.2;
+    padding-left: 0.75ch;
   }
 </style>
