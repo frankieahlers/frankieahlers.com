@@ -10,10 +10,14 @@ This site uses [Astro](https://astro.build/).
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 
+## Tools
+
+- [mesh gradient creator](https://csshero.org/mesher/)
+
 ### Directory guide
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+| Directory | Description |
+| -- | -- |
+| `src/pages` | `.astro` and `.md` files exposed as routes |
+| `src/components/` | JSX components |
+| `public/` | static assets |

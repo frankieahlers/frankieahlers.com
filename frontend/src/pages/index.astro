@@ -4,9 +4,11 @@ import Icon from '../components/Icon.astro';
 ---
 
 <Layout title="Howdy">
-  <main>
+  <main class="gradient-background">
     <nav>
-      <Icon icon="frankie-title" />
+      <div class="icon-container">
+        <Icon icon="frankie-title" />
+      </div>
     </nav>
 
     <div class="content">
@@ -28,14 +30,29 @@ import Icon from '../components/Icon.astro';
 
   main {
     height: 100vh;
+    width: 100vw;
     display: grid;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: minmax(10%, 20%) auto;
     grid-template-columns: auto;
-    background: blue;
+  }
+
+  .gradient-background {
+    background-color: hsla(41, 89%, 61%, 1);
+    background-image: radial-gradient(at 26% 74%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+      radial-gradient(at 73% 75%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+      radial-gradient(at 95% 76%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+      radial-gradient(at 22% 11%, hsla(3, 71%, 49%, 1) 0px, transparent 50%),
+      radial-gradient(at 45% 19%, hsla(51, 96%, 68%, 1) 0px, transparent 50%),
+      radial-gradient(at 7% 16%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+      radial-gradient(at 5% 94%, hsla(340, 38%, 64%, 1) 0px, transparent 50%);
   }
 
   nav {
     grid-row: 1;
+  }
+
+  div.icon-container {
+    padding: 50px;
   }
 
   div.content {
