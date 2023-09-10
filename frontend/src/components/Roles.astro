@@ -32,8 +32,7 @@ interface Props {}
 
   span.role.current:empty:before {
     content: 'UX designer';
-    animation: cycle-text 3s ease-in-out 2s infinite forwards;
-    animation-delay: 2s;
+    animation: cycle-text 8s ease-in-out infinite;
   }
   span.role.current {
     border-style: solid;
@@ -52,24 +51,24 @@ interface Props {}
       content: 'UX designer';
       opacity: 1;
     }
-    20% {
+    16% {
       opacity: 0;
     }
-    40% {
+    33% {
       content: 'pet parent';
       opacity: 1;
     }
-    60% {
+    50% {
       opacity: 0;
     }
-    80% {
+    66% {
       content: 'cyclist';
       opacity: 1;
     }
-    90% {
+    82% {
       opacity: 0;
     }
-    100%: {
+    100% {
       content: 'UX designer';
       opacity: 1;
     }
