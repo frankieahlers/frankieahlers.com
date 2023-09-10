@@ -4,11 +4,64 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Howdy">
   <main>
-    <h1>Frankie Ahlers</h1>
+    <nav>
+      <h1>Frankie Ahlers</h1>
+    </nav>
+
+    <div class="content">
+      <span class="prefix">I’m Frankie, a</span>
+      <div class="rotating-role">
+        <span class="role prev">pet parent</span>
+        <span class="role current">UX designer</span>
+        <span class="role next">cyclist</span>
+      </div>
+      <span class="suffix">based in Philadelphia, PA.</span>
+    </div>
   </main>
 </Layout>
 
 <style>
+  body {
+    margin: 0;
+  }
+
   main {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: auto;
+    background: blue;
+  }
+
+  nav {
+    grid-row: 1;
+  }
+
+  div.content {
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+  }
+
+  div.rotating-role {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5ch;
+    line-height: 1.75;
+  }
+
+  span.prev,
+  span.next {
+    padding-left: 0.75ch;
+  }
+
+  span.current {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 12px;
+    padding: 0 0.5ch;
   }
 </style>
