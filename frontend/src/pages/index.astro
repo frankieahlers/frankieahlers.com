@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+
+const roles = ['UX designer', 'pet parent', 'cyclist'];
+const currentRoleIndex = 0;
+const nextRoleIndex = (currentRoleIndex + 1) % roles.length;
+const prevRoleIndex = (currentRoleIndex - 1 + roles.length) % roles.length;
 ---
 
 <Layout title="Howdy">
@@ -14,78 +19,78 @@ import Icon from '../components/Icon.astro';
     <div class="content">
       <span class="prefix">I’m Frankie, a</span>
       <div class="rotating-role">
-        <span class="role prev">pet parent</span>
-        <span class="role current"></span>
-        <span class="role next">cyclist</span>
+        <span class="role prev">{roles[prevRoleIndex]}</span>
+        <span class="role current">{roles[currentRoleIndex]}</span>
+        <span class="role next">{roles[nextRoleIndex]}</span>
       </div>
       <span class="suffix">based in Philadelphia, PA.</span>
     </div>
   </main>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    main {
+      height: 100vh;
+      width: 100vw;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gradient-background {
+      background-color: hsla(41, 89%, 61%, 1);
+      background-image: radial-gradient(at 26% 74%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+        radial-gradient(at 73% 75%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+        radial-gradient(at 95% 76%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
+        radial-gradient(at 22% 11%, hsla(3, 71%, 49%, 1) 0px, transparent 50%),
+        radial-gradient(at 45% 19%, hsla(51, 96%, 68%, 1) 0px, transparent 50%),
+        radial-gradient(at 7% 16%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
+        radial-gradient(at 5% 94%, hsla(340, 38%, 64%, 1) 0px, transparent 50%);
+    }
+
+    nav {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+
+    div.content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: xx-large;
+    }
+
+    div.rotating-role {
+      display: flex;
+      flex-direction: column;
+      margin: 0.5ch;
+      line-height: 1.75;
+    }
+
+    span.current:empty:before {
+      content: '\200b';
+    }
+
+    span.current {
+      border-style: solid;
+      border-color: white;
+      border-width: 1px;
+      border-radius: 12px;
+      padding: 0 0.5ch;
+      line-height: normal;
+      width: 10ch;
+    }
+
+    .role:has(+ .current),
+    .current + span {
+      opacity: 0.2;
+      padding-left: 0.75ch;
+    }
+  </style>
 </Layout>
-
-<style>
-  body {
-    margin: 0;
-  }
-
-  main {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .gradient-background {
-    background-color: hsla(41, 89%, 61%, 1);
-    background-image: radial-gradient(at 26% 74%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
-      radial-gradient(at 73% 75%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
-      radial-gradient(at 95% 76%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
-      radial-gradient(at 22% 11%, hsla(3, 71%, 49%, 1) 0px, transparent 50%),
-      radial-gradient(at 45% 19%, hsla(51, 96%, 68%, 1) 0px, transparent 50%),
-      radial-gradient(at 7% 16%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
-      radial-gradient(at 5% 94%, hsla(340, 38%, 64%, 1) 0px, transparent 50%);
-  }
-
-  nav {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-  }
-
-  div.content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: xx-large;
-  }
-
-  div.rotating-role {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5ch;
-    line-height: 1.75;
-  }
-
-  span.current:empty:before {
-    content: '\200b';
-  }
-
-  span.current {
-    border-style: solid;
-    border-color: white;
-    border-width: 1px;
-    border-radius: 12px;
-    padding: 0 0.5ch;
-    line-height: normal;
-    width: 9ch;
-  }
-
-  .role:has(+ .current),
-  .current + span {
-    opacity: 0.2;
-    padding-left: 0.75ch;
-  }
-</style>
