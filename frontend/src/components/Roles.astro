@@ -1,0 +1,77 @@
+---
+interface Props {}
+
+// const {}  = Astro.props;
+---
+
+<div class="content">
+  <span class="prefix">I’m Frankie, a</span>
+  <div class="rotating-role">
+    <span class="role current"></span>
+  </div>
+  <span class="suffix">based in Philadelphia, PA.</span>
+</div>
+
+<style>
+  div.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+  }
+
+  div.rotating-role {
+    display: grid;
+    margin: 0.5ch;
+  }
+
+  span.role {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  span.role.current:empty:before {
+    content: 'UX designer';
+    animation: cycle-text 3s ease-in-out 2s infinite forwards;
+    animation-delay: 2s;
+  }
+  span.role.current {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 12px;
+    padding: 0 0.5ch;
+    line-height: normal;
+    width: 10ch;
+    display: flex;
+    justify-content: center;
+  }
+
+  @keyframes cycle-text {
+    0% {
+      content: 'UX designer';
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+    }
+    40% {
+      content: 'pet parent';
+      opacity: 1;
+    }
+    60% {
+      opacity: 0;
+    }
+    80% {
+      content: 'cyclist';
+      opacity: 1;
+    }
+    90% {
+      opacity: 0;
+    }
+    100%: {
+      content: 'UX designer';
+      opacity: 1;
+    }
+  }
+</style>
