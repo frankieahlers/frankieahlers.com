@@ -29,7 +29,7 @@ const socials = [
           {
             socials.map((item) => (
               <a href={item.url} target="_blank" title={item.name}>
-                <div class:list={[item.icon, "p-6"]} />
+                <div class:list={[item.icon, 'social-icon']} />
               </a>
             ))
           }
@@ -116,9 +116,28 @@ const socials = [
         justify-content: center;
       }
 
+      .social-icon {
+        padding: 1.75rem;
+      }
+
       #eyes {
         grid-row: 1;
         grid-column: 1;
+      }
+
+      @media (max-width: 400px) {
+        .side-menu {
+          width: 35px;
+        }
+
+        .social-icon {
+          padding: 0.75rem;
+        }
+
+        nav, footer {
+          font-size: 8vw;
+          font-weight: 700;
+        }
       }
     </style>
   </main>

@@ -31,6 +31,24 @@
       content: " ";
       margin: 10px;
     }
+
+    /* mobile */
+    @media (max-width: 400px) {
+      #eyes-container {
+        /* (eye width (75) + border (5)) * 2 + 10 */
+        width: 175px;
+      }
+
+      .eye {
+        width: 75px;
+        height: 75px;
+      }
+
+      .eye:after {
+        width: 25px;
+        height: 25px;
+      }
+    }
   </style>
 </div>
 
