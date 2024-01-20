@@ -1,7 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/Icon.astro';
-import Roles from '../components/Roles.astro';
+
+const socials = [
+  {
+    name: "Instagram",
+    url: "https://instagram.com/frankiescribbles",
+    icon: "i-uil-instagram",
+  },
+  {
+    name: "Email",
+    url: "mailto:frankieahlers@gmail.com",
+    icon: "i-uil-envelope",
+  },
+];
 ---
 
 <Layout title="Howdy">
@@ -13,8 +24,13 @@ import Roles from '../components/Roles.astro';
 
       <div id='center-content'>
         <div class='side-menu' id='left-menu'>
-          <div>ig</div>
-          <div>email</div>
+          {
+            socials.map((item) => (
+              <a href={item.url} target="_blank" title={item.name}>
+                <div class:list={[item.icon, "p-6"]} />
+              </a>
+            ))
+          }
         </div>
 
         <div id='eyes-container'>
