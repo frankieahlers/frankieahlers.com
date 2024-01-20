@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Eyes from '../components/Eyes.astro';
 
+const linkedInUrl = 'https://www.linkedin.com/in/frankie-ahlers-660a30233/';
 const socials = [
   {
     name: "Instagram",
@@ -44,7 +45,7 @@ const socials = [
       </div>
 
       <footer>
-        <span>work</span>
+        <span><a href={linkedInUrl}>work</a></span>
         <span>about</span>
       </nav>
     </div>
@@ -68,6 +69,11 @@ const socials = [
       main {
         margin: 2rem;
         height: -webkit-fill-available;
+      }
+
+      a {
+        text-decoration: none;
+        color: blue;
       }
 
       nav {
