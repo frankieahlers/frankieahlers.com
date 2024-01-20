@@ -42,11 +42,18 @@
       .eye {
         width: 75px;
         height: 75px;
+        animation: look-around 8s infinite;
       }
 
       .eye:after {
         width: 25px;
         height: 25px;
+      }
+
+      @keyframes look-around {
+        100% {
+          transform: rotate(360deg);
+        }
       }
     }
   </style>
@@ -71,10 +78,8 @@
   }
 
   const node = document.getElementById("main-content");
-  console.log('node', node)
   node.addEventListener("mousemove", (event) => {
     const eyes = document.querySelectorAll('.eye');
-    console.log('eyes', eyes)
     for(const eye of eyes) {
       const x = (getOffset(eye).left) + (eye.offsetWidth / 2);
       const y = (getOffset(eye).top) + (eye.offsetHeight / 2);
