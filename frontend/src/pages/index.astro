@@ -1,49 +1,143 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/Icon.astro';
-import Roles from '../components/Roles.astro';
+import Eyes from '../components/Eyes.astro';
+
+const linkedInUrl = 'https://www.linkedin.com/in/frankie-ahlers-660a30233/';
+const socials = [
+  {
+    name: "Instagram",
+    url: "https://instagram.com/frankiescribbles",
+    icon: "i-uil-instagram",
+  },
+  {
+    name: "Email",
+    url: "mailto:frankieahlers@gmail.com",
+    icon: "i-uil-envelope",
+  },
+];
 ---
 
 <Layout title="Howdy">
-  <main class="gradient-background">
-    <nav>
-      <div class="icon-container">
-        <Icon icon="frankie-title" />
-      </div>
-    </nav>
+  <main>
+    <div id='main-content'>
+      <nav>
+        <span>frankie ahlers</span>
+      </nav>
 
-    <Roles />
+      <div id='center-content'>
+        <div class='side-menu' id='left-menu'>
+          {
+            socials.map((item) => (
+              <a href={item.url} target="_blank" title={item.name}>
+                <div class:list={[item.icon, 'social-icon']} />
+              </a>
+            ))
+          }
+        </div>
+
+        <div id='eyes-container'>
+          <div id='eyes'>
+            <Eyes />
+          </div>
+        </div>
+
+        <div class='side-menu' />
+      </div>
+
+      <footer>
+        <span><a href={linkedInUrl}>work</a></span>
+        <span><a href="/about">about</a></span>
+      </nav>
+    </div>
 
     <style>
       body {
         margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+
+      #main-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: blue;
       }
 
       main {
-        height: 100vh;
-        width: 100vw;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        justify-content: center;
-        align-items: center;
+        margin: 2rem;
+        height: -webkit-fill-available;
       }
 
-      .gradient-background {
-        background-color: hsla(41, 89%, 61%, 1);
-        background-image: radial-gradient(at 26% 74%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
-          radial-gradient(at 73% 75%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
-          radial-gradient(at 95% 76%, hsla(215, 68%, 25%, 1) 0px, transparent 50%),
-          radial-gradient(at 22% 11%, hsla(3, 71%, 49%, 1) 0px, transparent 50%),
-          radial-gradient(at 45% 19%, hsla(51, 96%, 68%, 1) 0px, transparent 50%),
-          radial-gradient(at 7% 16%, hsla(340, 38%, 64%, 1) 0px, transparent 50%),
-          radial-gradient(at 5% 94%, hsla(340, 38%, 64%, 1) 0px, transparent 50%);
+      a {
+        text-decoration: none;
+        color: blue;
       }
 
       nav {
-        position: absolute;
-        top: 50px;
-        left: 50px;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 4vw;
+        font-weight: 700;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 4vw;
+        font-weight: 700;
+      }
+
+      #center-content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+
+      #eyes-container {
+        height: 100%;
+        flex-grow: 1;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .side-menu {
+        width: 50px;
+      }
+
+      #left-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .social-icon {
+        padding: 1.75rem;
+      }
+
+      #eyes {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      @media (max-width: 400px) {
+        .side-menu {
+          width: 35px;
+        }
+
+        .social-icon {
+          padding: 0.75rem;
+        }
+
+        nav, footer {
+          font-size: 8vw;
+          font-weight: 700;
+        }
       }
     </style>
   </main>
