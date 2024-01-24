@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  title: string;
+}
+
+const linkedInUrl = 'https://www.linkedin.com/in/frankie-ahlers-660a30233/';
+
+const {
+  title,
+  leftLink = { href: linkedInUrl, text: 'work' },
+  rightLink = { href: '/about', text: 'about' },
+} = Astro.props;
+
+const { href: leftHref, text: leftText } = leftLink;
+const { href: rightHref, text: rightText } = rightLink;
+---
+<Layout title={title}>
+  <main>
+    <div id='main-content'>
+      <nav>
+        <span>frankie ahlers</span>
+      </nav>
+
+      <div id='center-content'>
+        <slot>
+      </div>
+
+      <footer>
+        <span><a href={leftHref}>{leftText}</a></span>
+        <span><a href={rightHref}>{rightText}</a></span>
+      </nav>
+    </div>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+      }
+
+      #main-content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        color: blue;
+      }
+
+      main {
+        display: flex;
+        margin: 2rem;
+        flex: 1;
+      }
+
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+
+      nav {
+        text-transform: lowercase;
+        text-align: center;
+        font-size: 4vw;
+        font-weight: 700;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 4vw;
+        font-weight: 700;
+      }
+
+      #center-content {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+      }
+
+      @media (max-width: 500px) {
+        nav, footer {
+          font-size: 8vw;
+          font-weight: 700;
+        }
+      }
+    </style>
+  </main>
+</Layout>
