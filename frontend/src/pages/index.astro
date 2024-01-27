@@ -1,8 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/main.astro';
 import Eyes from '../components/Eyes.astro';
 
-const linkedInUrl = 'https://www.linkedin.com/in/frankie-ahlers-660a30233/';
 const socials = [
   {
     name: "Instagram",
@@ -17,128 +16,61 @@ const socials = [
 ];
 ---
 
-<Layout title="Howdy">
-  <main>
-    <div id='main-content'>
-      <nav>
-        <span>frankie ahlers</span>
-      </nav>
+<MainLayout title="Howdy">
+  <div class='side-menu' id='left-menu'>
+    {
+      socials.map((item) => (
+        <a href={item.url} target="_blank" title={item.name}>
+          <div class:list={[item.icon, 'social-icon']} />
+        </a>
+      ))
+    }
+  </div>
 
-      <div id='center-content'>
-        <div class='side-menu' id='left-menu'>
-          {
-            socials.map((item) => (
-              <a href={item.url} target="_blank" title={item.name}>
-                <div class:list={[item.icon, 'social-icon']} />
-              </a>
-            ))
-          }
-        </div>
-
-        <div id='eyes-container'>
-          <div id='eyes'>
-            <Eyes />
-          </div>
-        </div>
-
-        <div class='side-menu' />
-      </div>
-
-      <footer>
-        <span><a href={linkedInUrl}>work</a></span>
-        <span><a href="/about">about</a></span>
-      </nav>
+  <div id='eyes-container'>
+    <div id='eyes'>
+      <Eyes />
     </div>
+  </div>
 
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-       }
+  <div class='side-menu' />
 
-      #main-content {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: space-between;
-        color: blue;
-      }
+  <style>
+    #eyes-container {
+      flex: 1;
+      flex-grow: 1;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
 
-      main {
-        display: flex;
-        margin: 2rem;
-        flex: 1;
-      }
+    .side-menu {
+      width: 50px;
+    }
 
-      a {
-        text-decoration: none;
-        color: blue;
-      }
+    #left-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-      nav {
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 4vw;
-        font-weight: 700;
-      }
+    .social-icon {
+      padding: 1.75rem;
+    }
 
-      footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 4vw;
-        font-weight: 700;
-      }
+    #eyes {
+      grid-row: 1;
+      grid-column: 1;
+    }
 
-      #center-content {
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-      }
-
-      #eyes-container {
-        flex: 1;
-        flex-grow: 1;
-        display: grid;
-        justify-items: center;
-        align-items: center;
-      }
-
+    @media (max-width: 500px) {
       .side-menu {
-        width: 50px;
-      }
-
-      #left-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 35px;
       }
 
       .social-icon {
-        padding: 1.75rem;
+        padding: 0.75rem;
       }
-
-      #eyes {
-        grid-row: 1;
-        grid-column: 1;
-      }
-
-      @media (max-width: 500px) {
-        .side-menu {
-          width: 35px;
-        }
-
-        .social-icon {
-          padding: 0.75rem;
-        }
-
-        nav, footer {
-          font-size: 8vw;
-          font-weight: 700;
-        }
-      }
-    </style>
-  </main>
-</Layout>
+    }
+  </style>
+</MainLayout>

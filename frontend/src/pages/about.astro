@@ -1,45 +1,116 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/main.astro';
+import { sha256 } from 'js-sha256';
+
+const email = 'frankieahlers@gmail.com';
+const gravatarUrl = `https://gravatar.com/avatar/${sha256(email)}?s=250`
+
+const rightLink = { href: '/', text: 'home'};
 ---
 
-<Layout title="About">
-  <main>
-    <div id='main-content'>
-      <span>Work in progress</span>
+<MainLayout title="About" rightLink={rightLink}>
+  <div id='about-container'>
+    <div class='panel'>
+      <div class="line"></div>
+      <div class='panel-content'>
+        <img src={gravatarUrl} alt="Me!" class='profile-photo' />
+        <div id="blurb">
+          <p>
+          Frankie is a silly goofy UX designer with a background in customer experience - a true professional.
+          </p>
+
+          <p>
+          Frankie, the timeless classic of Italian cuisine, needs no introduction. With its long, slender strands of durum wheat pasta, spaghetti is a versatile canvas for a myriad of delicious sauces. Whether adorned with rich marinara, savory Bolognese, or a simple garlic and olive oil drizzle, spaghetti offers a comforting and satisfying dining experience.
+          </p>
+
+          <p>
+          Frankie has worked and will continue to work for the rest of their adult life, unless they can miraculously get out of crushing student debt.
+          </p>
+
+          <p>
+          This is simply place holder text. Like life, it is temporary!
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+  <style>
+    #about-container {
+      color: blue;
+      flex: 1;
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: auto;
+      justify-items: center;
+      align-items: center;
+    }
 
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        width: 100vw;
+    .panel {
+      border: 2px solid blue;
+      border-radius: 10px;
+      box-shadow: 5px 5px;
+      width: 50%;
+      font-size: small;
+    }
+
+    .panel-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .line {
+      border-bottom: 2px solid blue;
+      padding-top: 30px;
+    }
+
+    .profile-photo {
+      padding: 25px;
+      height: 250px;
+      width: 250px;
+    }
+
+    #blurb {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      grid-row: 1;
+      grid-column: 1;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 4vw;
+      font-weight: 700;
+    }
+
+    p {
+      color: black;
+    }
+
+    @media (max-width: 500px) {
+      .panel {
+        width: 90%;
+        height: 90%;
         display: flex;
+        flex-direction: column;
       }
 
-      main {
-        display: flex;
-        margin: 2rem;
-        flex: 1;
-      }
-
-      #main-content {
-        color: blue;
-        flex: 1;
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: auto;
-        justify-items: center;
+      .panel-content {
+        flex-direction: column;
         align-items: center;
+        overflow: scroll;
+        padding: 0;
+        margin: 30px;
+        flex: 1;
       }
 
-      span {
-        grid-row: 1;
-        grid-column: 1;
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 4vw;
-        font-weight: 700;
+      .profile-photo {
+        height: 225px;
+        width: 225px;
+        padding: 0 0 25px 0;
       }
-    </style>
-  </main>
+    }
+  </style>
 </Layout>
