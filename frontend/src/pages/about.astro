@@ -24,10 +24,6 @@ const rightLink = { href: '/', text: 'home'};
           </p>
 
           <p>
-          Frankie has worked and will continue to work for the rest of their adult life, unless they can miraculously get out of crushing student debt.
-          </p>
-
-          <p>
           This is simply place holder text. Like life, it is temporary!
           </p>
         </div>
@@ -65,15 +61,15 @@ const rightLink = { href: '/', text: 'home'};
     }
 
     .profile-photo {
-      padding: 25px;
+      padding: 25px 25px 25px 0;
       height: 250px;
       width: 250px;
     }
 
     #blurb {
-      height: 300px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
 
     span {
@@ -87,12 +83,13 @@ const rightLink = { href: '/', text: 'home'};
 
     p {
       color: black;
+      float: left;
+      display: inline;
     }
 
     @media (max-width: 500px) {
       .panel {
         width: 90%;
-        height: 90%;
         display: flex;
         flex-direction: column;
       }
